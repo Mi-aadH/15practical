@@ -21,6 +21,17 @@ public class Anagrams {
 
         List<String>lines = Files.readAllLines(Paths.get(input_file));
         Map<String,Integer> words= new HashMap<>();
+
+         for(String line : lines){
+            String[]parts = line.split("\\s+");
+
+            for(String w : parts){
+                String word = w.replaceAll("[^A-Za-z']","").toLowerCase();
+                if (word.length()==0) continue;
+                words.put(word,words.getOrDefault(word,0)+1);
+                
+            }
+        }
         
     }
 }
