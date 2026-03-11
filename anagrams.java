@@ -51,5 +51,22 @@ public class Anagrams {
                 }
             }
         }
+          Collections.sort(output);
+        Files.createDirectories(Paths.get("latex"));
+        PrintWriter tex = new PrintWriter("latex/theAnagrams.tex");
+
+        char current = 'X';
+        for ( String lemma : output ){
+            char first = lemma.charAt(0);
+            if ( Character.toLowerCase(first)!=Character.toLowerCase(current)){
+                current = first;
+                tex.println();
+                tex.println("\\vspace{14pt}");
+                tex.println("\\noindent\\notextbf{\\Large"+Character.toUpperCase(first)+"}\\\\*[+12pt]");
+
+            }
+            tex.println(lemma);
+        }
+        tex.close();
     }
 }
