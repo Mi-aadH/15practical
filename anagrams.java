@@ -1,6 +1,8 @@
 //start anagrams project
 
-import java.util.Arrays;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.*;
 
 public class Anagrams {
 //creating a signature
@@ -37,6 +39,17 @@ public class Anagrams {
             String sign = signature(word);
             anagrams.computeIfAbsent(sign,k->new ArrayList<>()).add(word);
         }
-        
+        List<String>output= new ArrayList<>();
+        for(List<String>group: anagrams.values()){
+            if (group.size()>1){
+                String line = String.join(" ",group);
+                for (int i = 0; i < group.size();i++){
+                    output.add(line + "\\\\");
+
+                    int space = line.indexOf("");
+                    line = line.substring(space + 1)+" "+line.substring(0,space);
+                }
+            }
+        }
     }
 }
