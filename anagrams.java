@@ -9,4 +9,18 @@ public class Anagrams {
         Arrays.sort(letters);
         return new String(letters);
     }
+
+     public static void main(String[]args) throws Exception{
+        if (args.length != 1){
+            System.out.println("Input file for java Anagrams");
+            return;
+        }
+        
+        String input_file = args[0];
+        System.out.println("Reading:"+input_file);
+
+        List<String>lines = Files.readAllLines(Paths.get(input_file));
+        Map<String,Integer> words= new HashMap<>();
+        
+    }
 }
