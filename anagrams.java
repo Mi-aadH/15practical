@@ -32,6 +32,11 @@ public class Anagrams {
                 
             }
         }
+         Map<String,List<String>>anagrams= new HashMap<>();
+        for (String word : words.keySet()){
+            String sign = signature(word);
+            anagrams.computeIfAbsent(sign,k->new ArrayList<>()).add(word);
+        }
         
     }
 }
